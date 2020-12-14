@@ -76,7 +76,7 @@ public class FreeToPlay extends Fragment {
         }
         binding.appBar.setNavigationOnClickListener(new NavigationIconClickListener(
                 context,
-                view.findViewById(R.id.gridTopFreeToPlay),
+                view.findViewById(R.id.gridFreeToPlay),
                 new AccelerateDecelerateInterpolator(),
                 context.getDrawable(R.drawable.menu),
                 context.getDrawable(R.drawable.menu_open)
@@ -85,7 +85,7 @@ public class FreeToPlay extends Fragment {
 
     private void configUI() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            view.findViewById(R.id.gridTopFreeToPlay).setBackground(getContext().getDrawable(R.drawable.product_grid_background_shape));
+            view.findViewById(R.id.gridFreeToPlay).setBackground(getContext().getDrawable(R.drawable.product_grid_background_shape));
         }
     }
 

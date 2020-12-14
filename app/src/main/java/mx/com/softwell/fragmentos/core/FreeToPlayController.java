@@ -28,12 +28,11 @@ public class FreeToPlayController {
     private boolean status = false;
     private String message = "";
     private String data = "";
-    private List<Juego> Juego;
-    Type JuegoType = new TypeToken<List<Juego>>(){}.getType();
+    private List<Juego> juegos;
+    Type juegosType = new TypeToken<List<Juego>>(){}.getType();
     private static String TAG = "FreeToPlayController";
 
     private FreeToPlayController() {
-
     }
 
     public static FreeToPlayController Instance(){
@@ -52,11 +51,11 @@ public class FreeToPlayController {
                     message = jsonObject.getString("message");
                     if(status){
                         data = jsonObject.getJSONArray("data").toString();
-                        Juego = new Gson().fromJson(data, JuegoType);
-                        //miscController.CloseWait();
+                        juegos = new Gson().fromJson(data, juegosType);
+                        miscController.CloseWait();
                         Log.e(TAG, data);
-                        Log.e(TAG, Juego.toString());
-                        ((FreeToPlay) MainActivity.GLOBALS.get("freeToPlay")).actualizar(Juego);
+                        Log.e(TAG, juegos.toString());
+                        ((FreeToPlay) MainActivity.GLOBALS.get("freeToPlayFragment")).actualizar(juegos);
                     }else{
                         miscController.CloseWait();
                         Log.e(TAG, message);

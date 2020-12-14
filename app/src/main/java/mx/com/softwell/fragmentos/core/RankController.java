@@ -15,6 +15,7 @@ import java.util.List;
 import mx.com.softwell.fragmentos.api.API;
 import mx.com.softwell.fragmentos.api.apiservices.RankService;
 import mx.com.softwell.fragmentos.gui.MainActivity;
+import mx.com.softwell.fragmentos.gui.Rank;
 import mx.com.softwell.fragmentos.gui.TopJuegos;
 import mx.com.softwell.fragmentos.model.Juego;
 import retrofit2.Call;
@@ -29,7 +30,7 @@ public class RankController {
     private String data = "";
     private List<Juego> juegos;
     Type juegosType = new TypeToken<List<Juego>>(){}.getType();
-    private static String TAG = "JuegoController";
+    private static String TAG = "RankController";
 
     private RankController(){
 
@@ -52,10 +53,10 @@ public class RankController {
                     if(status){
                         data = jsonObject.getJSONArray("data").toString();
                         juegos = new Gson().fromJson(data, juegosType);
-                        //miscController.CloseWait();
+                        miscController.CloseWait();
                         Log.e(TAG, data);
                         Log.e(TAG, juegos.toString());
-                        ((TopJuegos) MainActivity.GLOBALS.get("topJuegosFragment")).actualizar(juegos);
+                        ((Rank) MainActivity.GLOBALS.get("rankFragment")).actualizar(juegos);
                     }else{
                         miscController.CloseWait();
                         Log.e(TAG, message);

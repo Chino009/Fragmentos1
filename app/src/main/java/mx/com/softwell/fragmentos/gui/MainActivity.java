@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.HashMap;
 
@@ -41,6 +42,34 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
                     .add(R.id.contentPanel, new LoginFragment())
                     .commit();
         }
+    }
+
+    public void TopJuegos(View view){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.contentPanel,new TopJuegos())
+                .commit();
+    }
+
+    public void FreeToPlay(View view){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.contentPanel,new FreeToPlay())
+                .commit();
+    }
+
+    public void OldSchool(View view){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.contentPanel,new OldSchool())
+                .commit();
+    }
+
+    public void Rank(View view){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.contentPanel,new Rank())
+                .commit();
     }
 
     @Override

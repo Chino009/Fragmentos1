@@ -13,37 +13,35 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import mx.com.softwell.fragmentos.api.API;
-import mx.com.softwell.fragmentos.api.apiservices.OldService;
+import mx.com.softwell.fragmentos.api.apiservices.TopJuegoService;
 import mx.com.softwell.fragmentos.gui.MainActivity;
-import mx.com.softwell.fragmentos.gui.OldSchool;
 import mx.com.softwell.fragmentos.gui.TopJuegos;
 import mx.com.softwell.fragmentos.model.Juego;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OldSchoolController {
-    private static OldSchoolController instance=null;
+public class JuegoController {
+    private static JuegoController instance=null;
     private MiscController miscController = MiscController.Instance();
     private boolean status = false;
     private String message = "";
     private String data = "";
     private List<Juego> juegos;
     Type juegosType = new TypeToken<List<Juego>>(){}.getType();
-    private static String TAG = "OldSchoolController";
+    private static String TAG = "JuegoController";
 
-    private OldSchoolController(){
+    private JuegoController(){
 
     }
-
-    public static OldSchoolController Instance(){
+    public static JuegoController Instance(){
         if(instance == null)
-            instance = new OldSchoolController();
+            instance = new JuegoController();
         return instance;
     }
 
     public void GetAll(){
-        API.getApi().create(OldService.class).getAll().enqueue(new Callback<JsonObject>() {
+        API.getApi().create(TopJuegoService.class).getAll().enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 try{
@@ -56,7 +54,7 @@ public class OldSchoolController {
                         miscController.CloseWait();
                         Log.e(TAG, data);
                         Log.e(TAG, juegos.toString());
-                        ((OldSchool) MainActivity.GLOBALS.get("oldSchoolFragment")).actualizar(juegos);
+                        ((TopJuegos) MainActivity.GLOBALS.get("juegoFragment")).actualizar(juegos);
                     }else{
                         miscController.CloseWait();
                         Log.e(TAG, message);

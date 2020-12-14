@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".gui.FreeToPlay"
+    tools:context=".gui.Rank"
     android:clipChildren="false"
     android:clipToPadding="false">
 
@@ -42,7 +42,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:elevation="8dp"
         android:fillViewport="true"
-        android:id="@+id/gridFreeToPlay"
+        android:id="@+id/gridRank"
         android:background="@color/productGridBackgroundColor"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
@@ -54,13 +54,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:text="Free To Play"
+                android:text="Rank"
                 android:textAlignment="textStart" />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:id="@+id/rclvFreeToPlay"/>
+                android:id="@+id/rclvRank"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton

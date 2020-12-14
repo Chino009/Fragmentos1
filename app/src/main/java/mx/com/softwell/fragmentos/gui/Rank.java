@@ -19,20 +19,21 @@ import mx.com.softwell.fragmentos.R;
 import mx.com.softwell.fragmentos.core.MiscController;
 import mx.com.softwell.fragmentos.core.RankController;
 import mx.com.softwell.fragmentos.core.TopJuegoController;
+import mx.com.softwell.fragmentos.databinding.FragmentRankBinding;
 import mx.com.softwell.fragmentos.databinding.FragmentTopJuegosBinding;
 import mx.com.softwell.fragmentos.gui.components.JuegosAdapter;
 import mx.com.softwell.fragmentos.gui.components.NavigationHost;
 import mx.com.softwell.fragmentos.gui.components.NavigationIconClickListener;
 import mx.com.softwell.fragmentos.model.Juego;
 
-public class Ranked extends Fragment {
+public class Rank extends Fragment {
 
     private MiscController miscController = MiscController.Instance();
     private RankController rankController = RankController.Instance();
-    private FragmentTopJuegosBinding binding;
+    private FragmentRankBinding binding;
     private View view;
     private Context context;
-    private static String TAG = "Ranked";
+    private static String TAG = "Rank";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class Ranked extends Fragment {
     }
 
     private void configView(LayoutInflater inflater, ViewGroup container) {
-        binding = FragmentTopJuegosBinding.inflate(inflater, container, false);
+        binding = FragmentRankBinding.inflate(inflater, container, false);
         view = binding.getRoot();
         context = container.getContext();
     }
@@ -76,7 +77,7 @@ public class Ranked extends Fragment {
         }
         binding.appBar.setNavigationOnClickListener(new NavigationIconClickListener(
                 context,
-                view.findViewById(R.id.gridTopGames),
+                view.findViewById(R.id.gridRank),
                 new AccelerateDecelerateInterpolator(),
                 context.getDrawable(R.drawable.menu),
                 context.getDrawable(R.drawable.menu_open)
@@ -85,15 +86,15 @@ public class Ranked extends Fragment {
 
     private void configUI() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            view.findViewById(R.id.gridTopGames).setBackground(getContext().getDrawable(R.drawable.product_grid_background_shape));
+            view.findViewById(R.id.gridRank).setBackground(getContext().getDrawable(R.drawable.product_grid_background_shape));
         }
     }
 
     private void configRecycler() {
 
-        binding.rclvTopJuegos.setHasFixedSize(true);
+        binding.rclvRank.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
-        binding.rclvTopJuegos.setLayoutManager(layoutManager);
+        binding.rclvRank.setLayoutManager(layoutManager);
 
     }
 
@@ -102,8 +103,8 @@ public class Ranked extends Fragment {
         rankController.GetAll();
     }
 
-    public void actualizar(List<Juego> rank){
-        binding.rclvTopJuegos.setAdapter(new JuegosAdapter(rank));
+    public void actualizar(List<Juego> juegos){
+        binding.rclvRank.setAdapter(new JuegosAdapter(juegos));
         miscController.CloseWait();
     }
 }

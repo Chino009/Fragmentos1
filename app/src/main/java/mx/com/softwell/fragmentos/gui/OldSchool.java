@@ -19,6 +19,7 @@ import mx.com.softwell.fragmentos.R;
 import mx.com.softwell.fragmentos.core.FreeToPlayController;
 import mx.com.softwell.fragmentos.core.MiscController;
 import mx.com.softwell.fragmentos.core.OldSchoolController;
+import mx.com.softwell.fragmentos.databinding.FragmentOldSchoolBinding;
 import mx.com.softwell.fragmentos.databinding.FragmentTopJuegosBinding;
 import mx.com.softwell.fragmentos.gui.components.JuegosAdapter;
 import mx.com.softwell.fragmentos.gui.components.NavigationHost;
@@ -29,7 +30,7 @@ public class OldSchool extends Fragment {
 
     private MiscController miscController = MiscController.Instance();
     private OldSchoolController oldSchoolController = OldSchoolController.Instance();
-    private FragmentTopJuegosBinding binding;
+    private FragmentOldSchoolBinding binding;
     private View view;
     private Context context;
     private static String TAG = "OldSchool";
@@ -60,11 +61,11 @@ public class OldSchool extends Fragment {
     }
 
     private void configGlobals() {
-        MainActivity.GLOBALS.put("topJuegosFragment", this);
+        MainActivity.GLOBALS.put("oldSchoolFragment", this);
     }
 
     private void configView(LayoutInflater inflater, ViewGroup container) {
-        binding = FragmentTopJuegosBinding.inflate(inflater, container, false);
+        binding = FragmentOldSchoolBinding.inflate(inflater, container, false);
         view = binding.getRoot();
         context = container.getContext();
     }
@@ -76,7 +77,7 @@ public class OldSchool extends Fragment {
         }
         binding.appBar.setNavigationOnClickListener(new NavigationIconClickListener(
                 context,
-                view.findViewById(R.id.gridTopGames),
+                view.findViewById(R.id.gridOldSchool),
                 new AccelerateDecelerateInterpolator(),
                 context.getDrawable(R.drawable.menu),
                 context.getDrawable(R.drawable.menu_open)
@@ -85,25 +86,25 @@ public class OldSchool extends Fragment {
 
     private void configUI() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            view.findViewById(R.id.gridTopGames).setBackground(getContext().getDrawable(R.drawable.product_grid_background_shape));
+            view.findViewById(R.id.gridOldSchool).setBackground(getContext().getDrawable(R.drawable.product_grid_background_shape));
         }
     }
 
     private void configRecycler() {
 
-        binding.rclvTopJuegos.setHasFixedSize(true);
+        binding.rclvOldSchool.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
-        binding.rclvTopJuegos.setLayoutManager(layoutManager);
+        binding.rclvOldSchool.setLayoutManager(layoutManager);
 
     }
 
     private void actualizar(){
-        miscController.ShowWait(context, "Consultando Old School ...");
+        miscController.ShowWait(context, "Consultando juegos ...");
         oldSchoolController.GetAll();
     }
 
-    public void actualizar(List<Juego> old){
-        binding.rclvTopJuegos.setAdapter(new JuegosAdapter(old));
+    public void actualizar(List<Juego> juegos){
+        binding.rclvOldSchool.setAdapter(new JuegosAdapter(juegos));
         miscController.CloseWait();
     }
 }

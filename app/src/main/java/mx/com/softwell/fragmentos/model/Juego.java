@@ -6,14 +6,14 @@ public class Juego {
     private int idJuego;
     private String nombre;
     private String descripcion;
-    private int clasificacion;
+    private float clasificacion;
     private String imagen;
     private boolean activo;
 
     public Juego() {
     }
 
-    public Juego(int idJuego, String nombre, String descripcion, int clasificacion, String imagen, boolean activo) {
+    public Juego(int idJuego, String nombre, String descripcion, float clasificacion, String imagen, boolean activo) {
         this.idJuego = idJuego;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -46,11 +46,11 @@ public class Juego {
         this.descripcion = descripcion;
     }
 
-    public int getClasificacion() {
+    public float getClasificacion() {
         return clasificacion;
     }
 
-    public void setClasificacion(int clasificacion) {
+    public void setClasificacion(float clasificacion) {
         this.clasificacion = clasificacion;
     }
 

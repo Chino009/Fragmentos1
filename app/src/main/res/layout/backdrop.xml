@@ -3,6 +3,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mnTopJuegos"
+        android:onClick="TopJuegos"
         style="@style/Widget.Ebony.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -10,6 +11,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mnTopRanked"
+        android:onClick="Rank"
         style="@style/Widget.Ebony.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +19,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mnFreetoPlay"
+        android:onClick="FreeToPlay"
         style="@style/Widget.Ebony.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,6 +27,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mnOldSchool"
+        android:onClick="OldSchool"
         style="@style/Widget.Ebony.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
